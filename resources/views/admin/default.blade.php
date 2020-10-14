@@ -49,6 +49,7 @@
     @stack('js')
     <!-- End of specific js content placeholder -->
 
+    @yield('script')
 </body>
 
 </html>

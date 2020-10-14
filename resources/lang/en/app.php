@@ -27,6 +27,9 @@ return [
 	"reset_password_btn" => "Send reset link",
 	"connect"            => "Loggin",
 
+	//Contact 
+	"success_email" 	=> "Email Sent",
+
 
 
 ];

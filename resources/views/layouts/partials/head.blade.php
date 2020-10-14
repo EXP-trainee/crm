@@ -9,6 +9,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     {{-- <link href="{{ mix('/css/rtl.css') }}" rel="stylesheet"> --}}
     
     <!-- Global css content -->

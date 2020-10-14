@@ -19,3 +19,11 @@
         <span class="title">Users</span>
     </a>
 </li>
+<li class="nav-item">
+    <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.customers') ? 'active' : '' }}" href="{{ route(ADMIN . '.customers.index') }}">
+        <span class="icon-holder">
+            <i class="c-brown-500 ti-user"></i>
+        </span>
+        <span class="title">Customers</span>
+    </a>
+</li>
