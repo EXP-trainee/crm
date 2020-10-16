@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleAdd">
             Add
         </button>
-        <a href="/send-email" class="btn btn-primary">
+        <a href="{{ route(ADMIN . '.mail') }}" class="btn btn-primary">
             Send email
         </a>
         @include('admin.customers.create')
@@ -23,7 +23,7 @@
 
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
         <div class="table-responsive">
-            <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -76,8 +76,10 @@
                         </tr>
                     @endforeach
                 </tbody>
-            
             </table>
+            <div class="d-flex justify-content-end">
+                {{ $items->links() }}
+            </div>
         </div>
     </div>
 

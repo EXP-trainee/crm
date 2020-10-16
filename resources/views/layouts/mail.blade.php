@@ -7,25 +7,34 @@
 		</p>
 		<p>
 			<span class="info">Email: </span>
-			{{-- {{$info['mail']}} --}}
 			{{  $data  }}
 		</p>
 		<p>
 			<span class="info">Điện thoại: </span>
 			{{ $data2->phone }}
 		</p>
-	</div>					
+	</div>			
+	<div>
 		<h3>Sản phẩm mới ra mắt</h3>							
-		<table class="table-bordered table-responsive">
-			<tr class="bold">
-				<td width="30%">Tên sản phẩm</td>
-				<td width="25%">Ảnh</td>
-				<td width="25%">Giá</td>
-				<td width="20%">Số lượng</td>
-				<td width="15%">Thành tiền</td>
-			</tr>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">STT</th>
+					<th scope="col">Tên sản phẩm</th>
+					<th scope="col">Giá tiền</th>
+					<th scope="col">Hình ảnh</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Tên sản phẩm</td>
+					<td>Giá tiền</td>
+					<td><img src="" alt=""></td>
+				</tr>
+			</tbody>
 		</table>
-	</div>
+	</div>	
 	<div id="xac-nhan">
 		<br>
 		<p align="justify">

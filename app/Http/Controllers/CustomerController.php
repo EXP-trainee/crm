@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CustomersExport;
+use App\Imports\CustomersImport;
+use App\Mail\TestEmail;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $items = Customer::latest('updated_at')->get();
+        $items = Customer::latest('updated_at')->paginate(10);
 
         return view('admin.customers.index', compact('items'));
     }
@@ -92,5 +97,52 @@ class CustomerController extends Controller
         Customer::destroy($id);
 
         return back()->withSuccess(trans('app.success_destroy'));
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function importExportView()
+    {
+       return view('import');
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new CustomersExport, 'users.xlsx');
+    }
+   
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new CustomersImport,request()->file('file'));
+           
+        return back();
+    }
+
+    public function searchCustomer($keyword) 
+    {
+        $items = Customer::where('first_name','like',"%$keyword%")->orwhere('middle_name','like',"%$keyword%")->orwhere('last_name','like',"%$keyword%")->get();
+           
+        return view("admin.customers.search",compact('items'));
+    }
+
+    public function test(){
+        
+        $customers = Customer::all();
+        foreach ($customers as $item) {
+            $data = ['message' => 'This is a test!',
+                    'customer'     => $item,
+                ];    
+        }
+
+        Mail::to('nguyenmanhhuynh98@gmail.com')->send(new TestEmail($data));
+
+        return back()->withSuccess(trans('app.success_email'));
     }
 }
